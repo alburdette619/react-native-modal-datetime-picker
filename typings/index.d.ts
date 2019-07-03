@@ -197,6 +197,20 @@ interface DateTimePickerProps {
   timeZoneOffsetInMinutes?: number;
 
   /**
+   * Whether to show the cancel button on iOS
+   *
+   * Default is true
+   */
+  showCancelButton?: boolean;
+
+  /**
+   * Whether to show the confirm button on iOS
+   *
+   * Default is true
+   */
+  showConfirmButton?: boolean;
+
+  /**
    * Date change handler.
    * This is called when the user changes the date or time in the UI.
    * The first and only argument is a Date object representing the new date and time.

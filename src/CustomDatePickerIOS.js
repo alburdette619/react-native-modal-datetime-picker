@@ -35,6 +35,8 @@ export default class CustomDatePickerIOS extends React.PureComponent {
     onHideAfterConfirm: PropTypes.func,
     pickerRefCb: PropTypes.func,
     reactNativeModalPropsIOS: PropTypes.any,
+    showCancelButton: PropTypes.boolean,
+    showConfirmButton: PropTypes.boolean,
     titleIOS: PropTypes.string,
     titleStyle: PropTypes.any
   };
@@ -51,6 +53,8 @@ export default class CustomDatePickerIOS extends React.PureComponent {
     onHideAfterConfirm: () => {},
     onDateChange: () => {},
     reactNativeModalPropsIOS: {},
+    showCancelButton: true,
+    showConfirmButton: true,
     titleIOS: "Pick a date"
   };
 
@@ -177,9 +181,10 @@ export default class CustomDatePickerIOS extends React.PureComponent {
     const DatePickerComponent = customDatePickerIOS || DatePickerIOS;
 
     const reactNativeModalProps = {
-      onBackdropPress: dismissOnBackdropPressIOS
-        ? this.handleCancel
-        : () => null,
+      onBackdropPress:
+        dismissOnBackdropPressIOS || !showCancelButton
+          ? this.handleCancel
+          : () => null,
       ...reactNativeModalPropsIOS
     };
 
@@ -221,13 +226,15 @@ export default class CustomDatePickerIOS extends React.PureComponent {
           </TouchableHighlight>
         </View>
 
-        <TouchableHighlight
-          style={styles.cancelButton}
-          underlayColor={HIGHLIGHT_COLOR}
-          onPress={this.handleCancel}
-        >
-          {customCancelButtonIOS || cancelButton}
-        </TouchableHighlight>
+        {showCancelButton && (
+          <TouchableHighlight
+            style={styles.cancelButton}
+            underlayColor={HIGHLIGHT_COLOR}
+            onPress={this.handleCancel}
+          >
+            {customCancelButtonIOS || cancelButton}
+          </TouchableHighlight>
+        )}
       </ReactNativeModal>
     );
   }
