@@ -216,16 +216,19 @@ export default class CustomDatePickerIOS extends React.PureComponent {
               onDateChange={this.handleDateChange}
             />
           </View>
-          <TouchableHighlight
-            style={styles.confirmButton}
-            underlayColor={HIGHLIGHT_COLOR}
-            onPress={this.handleConfirm}
-            disabled={
-              !neverDisableConfirmIOS && this.state.userIsInteractingWithPicker
-            }
-          >
-            {confirmButton}
-          </TouchableHighlight>
+          {showConfirmButton && (
+            <TouchableHighlight
+              style={styles.confirmButton}
+              underlayColor={HIGHLIGHT_COLOR}
+              onPress={this.handleConfirm}
+              disabled={
+                !neverDisableConfirmIOS &&
+                this.state.userIsInteractingWithPicker
+              }
+            >
+              {confirmButton}
+            </TouchableHighlight>
+          )}
         </View>
 
         {showCancelButton && (
