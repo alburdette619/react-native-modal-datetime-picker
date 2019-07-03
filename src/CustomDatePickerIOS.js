@@ -139,6 +139,8 @@ export default class CustomDatePickerIOS extends React.PureComponent {
       neverDisableConfirmIOS,
       pickerRefCb,
       reactNativeModalPropsIOS,
+      showCancelButton,
+      showConfirmButton,
       titleIOS,
       titleStyle,
       ...otherProps
